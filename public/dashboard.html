@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f2f2f2;
+            text-align: center;
+            padding-top: 100px;
+        }
+        
+        .dashboard {
+            background: white;
+            width: 400px;
+            margin: auto;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #ccc;
+        }
+        
+        button {
+            padding: 12px 30px;
+            background: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background: #555;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <h1>Welcome!</h1>
+
+        <h2 id="welcomeMessage"></h2>
+
+        <p>You have successfully logged in.</p>
+
+        <button id="logoutButton">Log Out</button>
+
+    </div>
+
+
+    <script>
+        const userName = localStorage.getItem("userName");
+
+        // Redirect if user is not logged in
+        if (!userName) {
+            window.location.href = "index.html";
+        } else {
+            document.getElementById("welcomeMessage").textContent =
+                "Welcome, " + userName + "!";
+        }
+
+
+        // Logout
+        document.getElementById("logoutButton").addEventListener("click", function() {
+
+            localStorage.removeItem("userName");
+
+            window.location.href = "index.html";
+
+        });
+    </script>
+
+</body>
+
+</html>
